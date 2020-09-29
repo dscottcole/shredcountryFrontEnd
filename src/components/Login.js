@@ -52,8 +52,9 @@ class Login extends React.Component {
     }
 
     clearState = () => {
-        this.setState({ "username": "", 
-        "password": "" 
+        this.setState({ 
+            "username": "", 
+            "password": "" 
         })
     }
 

@@ -52,9 +52,21 @@ class FormUnstackableGroup extends React.Component{
         "password_confirmation": this.state.passwordConfirmation
       }
     }
+
+    this.clearState()
     this.signUp(newUser)
-    
   }
+
+  clearState = () => {
+    this.setState({
+      username: '',
+      fullName: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      error: []
+    })
+}
 
   render(){
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Icon } from 'semantic-ui-react'
 
 class CartCard extends React.Component{
 
@@ -27,7 +28,12 @@ class CartCard extends React.Component{
                                 {bike.price}
                             </div>
                             <div class="extra">
-                                <button onClick={() => this.props.removeFromCart(bike)} class="negative ui button">Remove from Cart</button>
+                                <Button onClick={() => this.props.removeFromCart(bike)} negative animated='horizontal'>
+                                    <Button.Content hidden>Remove</Button.Content>
+                                    <Button.Content visible>
+                                        <Icon name='trash alternate icon' />
+                                    </Button.Content>
+                                </Button>
                             </div>
                         </div>
                     </div>

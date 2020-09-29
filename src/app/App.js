@@ -5,6 +5,7 @@ import Login from '../components/Login'
 import Browse from '../components/Browse'
 import Cart from '../components/Cart'
 import Menu from '../components/Menu'
+import Orders from '../components/Orders'
 
 import { 
   BrowserRouter, 
@@ -81,6 +82,11 @@ class App extends React.Component {
     }
   }
 
+  clearCart = () => {
+    localStorage.removeItem('cart')
+    this.setCart()
+  }
+
   handleLogin = () => {
     if (localStorage.getItem('auth_key')) {
       this.setState({isLoggedIn: true})
@@ -122,12 +128,16 @@ class App extends React.Component {
         </Route>
 
         <Route path="/cart">
-          <Cart cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart}/>  
+          <Cart cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart} clearCart={this.clearCart}/>  
         </Route>
 
-        <Route>
-          <Redirect to="/" />
+        <Route path="/orders">
+          <Orders />
         </Route>
+
+        {/* <Route>
+          <Redirect to="/" />
+        </Route> */}
 
         </BrowserRouter>
       </div>
