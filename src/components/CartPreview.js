@@ -24,7 +24,7 @@ class Cart extends React.Component{
     render() {
         let bikes = this.state.cart
         return(
-
+            
             <div class="ui grid">
                     {bikes.map(bike => <CartPreviewCard 
                         key={bike.id}

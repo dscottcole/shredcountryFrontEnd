@@ -4,6 +4,7 @@ import Signup from '../components/Signup'
 import Login from '../components/Login'
 import Browse from '../components/Browse'
 import Cart from '../components/Cart'
+import Menu from '../components/Menu'
 
 import { 
   BrowserRouter, 
@@ -17,7 +18,7 @@ class App extends React.Component {
     bikes: [],
     isLoggedIn: false,
     cart: [],
-    cartTotal: 0
+    cartTotal: 0,
   }
 
   componentDidMount = () => {
@@ -41,6 +42,8 @@ class App extends React.Component {
       let currentCart = JSON.parse(window.localStorage.cart)
       let currentTotal = currentCart.map(bike => bike.price).reduce((a,b) => a + b, 0)
       this.setState({ cart: currentCart, cartTotal: currentTotal})
+    } else {
+      this.setState({ cart: [], cartTotal: 0})
     }
   }
 
@@ -81,6 +84,8 @@ class App extends React.Component {
   handleLogin = () => {
     if (localStorage.getItem('auth_key')) {
       this.setState({isLoggedIn: true})
+    } else {
+      this.setState({isLoggedIn: false})
     }
   }
 
@@ -90,6 +95,8 @@ class App extends React.Component {
         <h1>Shredcountry.com</h1>
 
         <BrowserRouter>
+
+        <Menu isLoggedIn={this.state.isLoggedIn} cart={this.state.cart} />
 
         <Route exact path="/">
           <p>Home</p>
@@ -101,6 +108,8 @@ class App extends React.Component {
 
         <Route path="/logout" component={() => {
           localStorage.clear()
+          this.handleLogin()
+          this.setCart()
           return <Redirect to="/" />
         }} />
 
@@ -116,9 +125,9 @@ class App extends React.Component {
           <Cart cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart}/>  
         </Route>
 
-        {/* <Route>
-          <Redirect to="/home" />
-        </Route> */}
+        <Route>
+          <Redirect to="/" />
+        </Route>
 
         </BrowserRouter>
       </div>

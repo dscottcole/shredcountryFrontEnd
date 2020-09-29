@@ -19,7 +19,9 @@ class CartCard extends React.Component{
                                 <div class="meta">
                                     <span class="manufacturer">{"Manufacturer: " + bike.manufacturer}</span>
                                 </div>
-
+                                <div class="meta">
+                                    <span class="size">{"Size: " + bike.size}</span>
+                                </div>
                             <div class="price">
                                 <i class="dollar sign icon"></i>
                                 {bike.price}
