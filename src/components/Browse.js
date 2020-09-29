@@ -1,19 +1,23 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
-import Item from './Item'
+import Card from './Card'
+import CartPreview from "./CartPreview";
+// import { Grid } from "semantic-ui-react";
 
-class GridExampleColumns extends React.Component{
+class Browse extends React.Component{
     render() {
         return(
-            <Grid>
-                    {this.props.bikes.map(bike => <Item 
-                        key={bike.id}
-                        bike={bike}
-                    />)}
-            </Grid>
+            <div>
+                <CartPreview cart={this.props.cart} cartTotal={this.props.cartTotal} removeFromCart={this.props.removeFromCart} />
+                <div class="ui grid container">
+                {this.props.bikes.map(bike => <Card 
+                    key={bike.id}
+                    bike={bike}
+                    addToCart={this.props.addToCart}
+                />)}
+                </div>
+            </div>
         )
     }
 }
 
-export default GridExampleColumns
-
+export default Browse

@@ -1,14 +1,37 @@
 import React from 'react'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment, Message } from 'semantic-ui-react'
+import { 
+  withRouter
+ } from "react-router"
 
 class FormUnstackableGroup extends React.Component{
 
-  state ={
+  state = {
     username: '',
     fullName: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    error: []
+  }
+
+  signUp = (newUser) => {
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res['message']) {
+        this.setState({error: res['message'] })
+      } else {
+        this.setState({error: ""})
+        this.props.history.push('/login')
+      }
+    })
   }
 
   handleForm = (e) => {
@@ -29,13 +52,25 @@ class FormUnstackableGroup extends React.Component{
         "password_confirmation": this.state.passwordConfirmation
       }
     }
-    this.props.signUp(newUser)
+    this.signUp(newUser)
+    
   }
 
   render(){
+
+    let errorMessage = (
+      <Message
+      warning
+      header='Account creation failed'
+      list={[
+        ...this.state.error
+      ]}
+      />
+    )
+
     return(
       <Segment inverted>
-        <Form onChange={e => this.handleForm(e)} inverted>
+        <Form onChange={e => this.handleForm(e)} inverted warning >
           <Form.Group unstackable widths={2}>
             <Form.Input fluid label='Username' placeholder='Username' name='username' value={this.state.username}/>
           </Form.Group>
@@ -47,6 +82,9 @@ class FormUnstackableGroup extends React.Component{
             <Form.Input type='password' fluid label='Password' placeholder='Password' name='password' value={this.state.password} />
             <Form.Input type='password' fluid label='Password Confirmation' placeholder='Password Confirmation' name='passwordConfirmation' value={this.state.passwordConfirmation}/>
           </Form.Group>
+
+          {this.state.error.length !== 0 ? errorMessage : null}
+
           <Button onClick={e => this.handleSubmit(e)} type='submit'>Sign Up</Button>
         </Form>
     </Segment>
@@ -54,4 +92,4 @@ class FormUnstackableGroup extends React.Component{
   }
 }
 
-export default FormUnstackableGroup
+export default withRouter(FormUnstackableGroup)
