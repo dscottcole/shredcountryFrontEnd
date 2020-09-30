@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 
+
 class CartCard extends React.Component{
 
     render() {
@@ -20,15 +21,13 @@ class CartCard extends React.Component{
                                 <div class="meta">
                                     <span class="manufacturer">{"Manufacturer: " + bike.manufacturer}</span>
                                 </div>
-                                <div class="meta">
-                                    <span class="size">{"Size: " + bike.size}</span>
-                                </div>
+
                             <div class="price">
                                 <i class="dollar sign icon"></i>
                                 {bike.price}
                             </div>
                             <div class="extra">
-                                <Button onClick={() => this.props.removeFromCart(bike)} negative animated='horizontal'>
+                                <Button onClick={() => this.props.modifyOrder(bike)} negative animated='horizontal'>
                                     <Button.Content hidden>Remove</Button.Content>
                                     <Button.Content visible>
                                         <Icon name='trash alternate icon' />

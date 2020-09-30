@@ -51,7 +51,7 @@ class BikeCard extends React.Component{
         )
 
         let clicked = (
-            <div class=" four wide column">
+            <div class="four wide column">
                 <div onClick={() => this.handleClick()} class="ui link cards">
                     <div class="card">
                         <div class="image">

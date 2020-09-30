@@ -23,9 +23,14 @@ class Cart extends React.Component{
 
     render() {
         let bikes = this.state.cart
+        let cartTotal = (
+            <h1> {"Cart Total: $" + this.props.cartTotal} </h1>
+        )
+
         return(
             
-            <div class="ui grid">
+            <div class="cart-preview">
+                    {this.props.cartTotal > 0? cartTotal : null}
                     {bikes.map(bike => <CartPreviewCard 
                         key={bike.id}
                         bike={bike}

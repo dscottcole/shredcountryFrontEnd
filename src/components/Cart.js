@@ -62,7 +62,7 @@ class Cart extends React.Component{
         let errorMessage = (
             <Message
             warning
-            header='Login Error!'
+            header='Error!'
             list={[
                 this.state.error
             ]}
@@ -83,7 +83,7 @@ class Cart extends React.Component{
                 <div class="ui centered grid">
                     <h2> { "Cart Total: $" + this.props.cartTotal } </h2>
                     <div class="row">
-                            <Button onClick={() => this.checkOut()} positive>Check Out</Button>
+                        <Button onClick={() => this.checkOut()} positive>Check Out</Button>
                     </div>
                     {this.state.error !== "" ? errorMessage : null}
                 </div>

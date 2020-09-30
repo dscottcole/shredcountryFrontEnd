@@ -10,6 +10,7 @@ class MenuInverted extends Component {
   }
 
   handleItemClick = (e, { name }) => {
+    
     let redirString = ""
     if (name === "Home") {
       redirString = "/"

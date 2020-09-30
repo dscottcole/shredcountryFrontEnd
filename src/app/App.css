@@ -1,4 +1,12 @@
 /* Outer Container CSS */
 body {
-  background: darkslategrey;
+  background-color: darkslategrey;
+}
+
+.browse {
+  display: flex;
+}
+
+.cart-preview {
+  margin-right: 5%;
 }
