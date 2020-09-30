@@ -25,23 +25,34 @@ class Orders extends React.Component {
     }
 
     setOrders = (ordersArg) => {
-        this.setState({ orders: ordersArg })
+        if (ordersArg.length > 0) {
+            this.setState({ orders: ordersArg, noOrders: false })
+        } else {
+            this.setState({noOrders: true})
+        }
     }
 
     render() {
         let orders = this.state.orders
-
         
-        return (
-
+        let allOrders = (
             <Grid celled='internally'>
-                    {orders.map(order => <OrderCard 
-                    key={order.id}
-                    order={order}
-                    showOrder={this.showOrder}
+                {orders.map(order => <OrderCard 
+                key={order.id}
+                order={order}
+                showOrder={this.showOrder}
                 />)}
             </Grid>
+        )
 
+        let zeroOrders = (
+            <div>
+                <h1> You do not have any existing orders. </h1>
+            </div>
+        )
+        
+        return (
+            orders.length > 0 ? allOrders : zeroOrders
         )
     }
 

@@ -26,7 +26,7 @@ class SingleOrder extends React.Component{
         })
         .then(res => res.json())
         .then(order => {
-            if (order.id != undefined) {
+            if (order.id !== undefined) {
                 this.setOrder(order)
             } else {
                 this.setState({ "error": order['message'] })
