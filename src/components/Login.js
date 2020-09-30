@@ -29,7 +29,6 @@ class Login extends React.Component {
                 this.props.history.push('/browse')
             } else {
                 this.setState({ "error": token['message'] })
-                console.log(token['message'])
             }
         })
     }
@@ -52,8 +51,9 @@ class Login extends React.Component {
     }
 
     clearState = () => {
-        this.setState({ "username": "", 
-        "password": "" 
+        this.setState({ 
+            "username": "", 
+            "password": "" 
         })
     }
 

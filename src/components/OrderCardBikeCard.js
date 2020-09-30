@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 
 
-class CartCard extends React.Component{
+class OrderCardBikeCard extends React.Component{
 
     render() {
         let bike = this.props.bike
@@ -26,14 +26,14 @@ class CartCard extends React.Component{
                                 <i class="dollar sign icon"></i>
                                 {bike.price}
                             </div>
-                            <div class="extra">
+                            {/* <div class="extra">
                                 <Button onClick={() => this.props.removeFromCart(bike)} negative animated='horizontal'>
                                     <Button.Content hidden>Remove</Button.Content>
                                     <Button.Content visible>
                                         <Icon name='trash alternate icon' />
                                     </Button.Content>
                                 </Button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -42,4 +42,4 @@ class CartCard extends React.Component{
     }
 }
 
-export default CartCard
+export default OrderCardBikeCard

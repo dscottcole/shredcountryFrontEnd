@@ -5,11 +5,14 @@ import Login from '../components/Login'
 import Browse from '../components/Browse'
 import Cart from '../components/Cart'
 import Menu from '../components/Menu'
+import Orders from '../components/Orders'
+import SingleOrder from '../components/SingleOrder'
 
 import { 
   BrowserRouter, 
   Redirect, 
-  Route 
+  Route,
+  Switch 
 } from 'react-router-dom'
 
 class App extends React.Component {
@@ -81,6 +84,11 @@ class App extends React.Component {
     }
   }
 
+  clearCart = () => {
+    localStorage.removeItem('cart')
+    this.setCart()
+  }
+
   handleLogin = () => {
     if (localStorage.getItem('auth_key')) {
       this.setState({isLoggedIn: true})
@@ -96,40 +104,55 @@ class App extends React.Component {
 
         <BrowserRouter>
 
+        
+
         <Menu isLoggedIn={this.state.isLoggedIn} cart={this.state.cart} />
 
-        <Route exact path="/">
-          <p>Home</p>
-        </Route>
+        <Switch>
 
-        <Route path="/login">
-          <Login handleLogin={this.handleLogin}/>
-        </Route>
+          <Route exact path="/">
+            <p>Home</p>
+          </Route>
 
-        <Route path="/logout" component={() => {
-          localStorage.clear()
-          this.handleLogin()
-          this.setCart()
-          return <Redirect to="/" />
-        }} />
+          <Route path="/login">
+            <Login handleLogin={this.handleLogin}/>
+          </Route>
 
-        <Route path="/signup">
-          <Signup />
-        </Route>
+          <Route path="/logout" component={() => {
+            localStorage.clear()
+            this.handleLogin()
+            this.setCart()
+            return <Redirect to="/" />
+          }} />
 
-        <Route path="/browse">
-          <Browse bikes={this.state.bikes} addToCart={this.addToCart} cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart} />
-        </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
 
-        <Route path="/cart">
-          <Cart cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart}/>  
-        </Route>
+          <Route path="/browse">
+            <Browse bikes={this.state.bikes} addToCart={this.addToCart} cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart} />
+          </Route>
 
-        <Route>
-          <Redirect to="/" />
-        </Route>
+          <Route path="/cart">
+            <Cart cart={this.state.cart} cartTotal={this.state.cartTotal} removeFromCart={this.removeFromCart} clearCart={this.clearCart}/>  
+          </Route>
+
+          <Route exact path="/orders">
+            <Orders />
+          </Route>
+
+          <Route path="/orders/:id">
+            <SingleOrder />
+          </Route>
+
+          <Route>
+            <Redirect to="/" />
+          </Route>
+
+        </Switch>
 
         </BrowserRouter>
+
       </div>
     )
   }

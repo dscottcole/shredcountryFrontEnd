@@ -27,7 +27,7 @@ class CartCard extends React.Component{
                                 {bike.price}
                             </div>
                             <div class="extra">
-                                <Button onClick={() => this.props.removeFromCart(bike)} negative animated='horizontal'>
+                                <Button onClick={() => this.props.modifyOrder(bike)} negative animated='horizontal'>
                                     <Button.Content hidden>Remove</Button.Content>
                                     <Button.Content visible>
                                         <Icon name='trash alternate icon' />

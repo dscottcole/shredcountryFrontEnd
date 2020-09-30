@@ -10,6 +10,7 @@ class MenuInverted extends Component {
   }
 
   handleItemClick = (e, { name }) => {
+    
     let redirString = ""
     if (name === "Home") {
       redirString = "/"
@@ -23,6 +24,8 @@ class MenuInverted extends Component {
       redirString = "/logout"
     } else if (name === 'View Cart') {
       redirString = "/cart"
+    } else if (name === 'Orders') {
+      redirString = "/orders"
     }
 
     this.setState({ activeItem: name })
@@ -60,6 +63,13 @@ class MenuInverted extends Component {
       onClick={this.handleItemClick}
       />
     )
+    let orders = (
+      <Menu.Item
+      name='Orders'
+      active={activeItem === 'Orders'}
+      onClick={this.handleItemClick}
+      />
+    )
 
     return (
       <Segment inverted>
@@ -76,8 +86,10 @@ class MenuInverted extends Component {
           />
 
           {this.props.cart.length !== 0 ? cart : null}
+          {this.props.isLoggedIn ? orders : null}
           {!this.props.isLoggedIn ? signUp : null}
           {!this.props.isLoggedIn ? logIn : logOut}
+
 
         </Menu>
       </Segment>
