@@ -72,8 +72,30 @@ class MenuInverted extends Component {
     )
 
     return (
-      <Segment inverted>
+      <Segment centered inverted>
         <Menu inverted pointing secondary>
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+          <Menu.Item />
+
           <Menu.Item
             name='Home'
             active={activeItem === 'Home'}
@@ -89,7 +111,6 @@ class MenuInverted extends Component {
           {this.props.isLoggedIn ? orders : null}
           {!this.props.isLoggedIn ? signUp : null}
           {!this.props.isLoggedIn ? logIn : logOut}
-
 
         </Menu>
       </Segment>

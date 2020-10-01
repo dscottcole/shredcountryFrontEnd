@@ -10,6 +10,7 @@ class Browse extends React.Component{
         bikes: [],
         searchTerm: '',
         sizeToFilter: '',
+        typeFilter: '',
         comboBikes: []
     }
 
@@ -27,14 +28,18 @@ class Browse extends React.Component{
         this.setState({ bikes: this.props.bikes })
     }
 
-    searchBikes = (e) => {
+    searchBikes = (string) => {
         this.setState({
-          searchTerm: e.target.value
+          searchTerm: string
         }, this.comboFilter())
     }
 
     sizeSelection = (size) => {
         this.setState({sizeToFilter: size}, this.comboFilter)
+    }
+
+    typeSelection = (type) => {
+        this.setState({typeFilter: type}, this.comboFilter)
     }
 
     comboFilter = () => {
@@ -50,6 +55,13 @@ class Browse extends React.Component{
         if (this.state.sizeToFilter !== "") {
             let currentBikes = baikas.filter(bike => {
                 return bike.size === this.state.sizeToFilter
+            })
+            baikas = currentBikes
+        }
+
+        if (this.state.typeFilter !== "") {
+            let currentBikes = baikas.filter(bike => {
+                return bike.bike_type === this.state.typeFilter
             })
             baikas = currentBikes
         }
@@ -82,7 +94,7 @@ class Browse extends React.Component{
 
         return(
             <div class="browse">
-                <FilterMenu searchBikes={this.searchBikes} sizeSelection={this.sizeSelection} />
+                <FilterMenu searchBikes={this.searchBikes} sizeSelection={this.sizeSelection} typeSelection={this.typeSelection} />
                 {this.state.comboBikes.length !== 0? filteredBikeCards : unfilteredBikeCards}
                 <CartPreview cart={this.props.cart} cartTotal={this.props.cartTotal} removeFromCart={this.props.removeFromCart} />
             </div>

@@ -17,7 +17,7 @@ class OrderCard extends React.Component{
 
         return(
             <Grid.Row>
-                <Container left text width={4}>
+                <Container left text>
                     <Header as='h2'>{"Order Number: " + order.id}</Header>
                     <p>{"Order Total: $" + order.order_total}</p>
                     <Button onClick={() => this.showOrder(order.id)} animated='horizontal'>

@@ -5,14 +5,15 @@ class FilterMenu extends React.Component{
     render() {
         return (
             <div class="filter-menu">
+                <p></p>
                 <Form>
-                <Input onChange={e => this.props.searchBikes(e)} icon='search' placeholder='Search Manufacturer' />
+                <Input onChange={e => this.props.searchBikes(e.target.value)} icon='search' placeholder='Search by Manufacturer' />
                 </Form>
 
                 <Form >
-                {/* <p></p> */}
+                <p></p>
                 <Form.Group onChange={e => this.props.sizeSelection(e.target.value)} widths='equal'>
-                <Form.Field label='Filter By Frame Size' control='select'>
+                <Form.Field label='Filter By Frame Size:' control='select'>
                     <option name="" value=''>No Filter</option>
                     <option name="S" value='S'>S</option>
                     <option name="M" value='M'>M</option>
@@ -20,32 +21,17 @@ class FilterMenu extends React.Component{
                     <option name="XL" value='XL'>XL</option>
                 </Form.Field>
                 </Form.Group>
-                {/* <Form.Group onChange={e => this.props.sizeSelection(e)} grouped>
-                <label>HTML radios</label>
-                <Form.Field
-                    label='S'
-                    control='input'
-                    type='radio'
-                    name='S'
-                />
-                <Form.Field
-                    label='M'
-                    control='input'
-                    type='radio'
-                    name='M'
-                />
-                </Form.Group> */}
-                {/* <Form.Group grouped>
-                <label>Filter By Frame Size</label>
-                    <Form.Field name="S" label='S' control='input' type='checkbox' />
-                    <Form.Field name="M" label='M' control='input' type='checkbox' />
-                    <Form.Field name="L" label='L' control='input' type='checkbox' />
-                    <Form.Field name="XL" label='XL' control='input' type='checkbox' />
-                </Form.Group> */}
-                {/* <Form.Field label='An HTML <textarea>' control='textarea' rows='3' /> */}
-                {/* <Form.Field label='An HTML <button>' control='button'>
-                HTML Button
-                </Form.Field> */}
+                <p></p>
+                <Form.Group onChange={e => this.props.typeSelection(e.target.value)} widths='equal'>
+                <Form.Field label='Filter By Discipline:' control='select'>
+                    <option name="" value=''>No Filter</option>
+                    <option name="Cross Country" value='Cross Country'>Cross Country</option>
+                    <option name="Trail" value='Trail'>Trail</option>
+                    <option name="Enduro" value='Enduro'>Enduro</option>
+                    <option name="Downhill" value='Downhill'>Downhill</option>
+                    <option name="Gravel" value='Gravel'>Gravel</option>
+                </Form.Field>
+                </Form.Group>
             </Form>
           </div>
         )

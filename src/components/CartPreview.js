@@ -30,12 +30,14 @@ class Cart extends React.Component{
         return(
             
             <div class="cart-preview">
+                <div class="cart-row" >
                     {this.props.cartTotal > 0? cartTotal : null}
                     {bikes.map(bike => <CartPreviewCard 
                         key={bike.id}
                         bike={bike}
                         removeFromCart={this.props.removeFromCart}
                     />)}
+                </div>
             </div>
         )
     }

@@ -1,7 +1,8 @@
 /* Outer Container CSS */
-body {
-  background-color: darkslategrey;
-}
+/* body {
+  background-color: black !important;
+  color: white !important;
+} */
 
 .browse {
   display: flex;
@@ -9,4 +10,109 @@ body {
 
 .cart-preview {
   margin-right: 5%;
+  color:black;
+}
+
+a {
+  color: black !important ;
+}
+
+.filter-menu {
+  text-align: center;
+  margin-left: 2.5%;
+}
+
+.cart {
+  text-align: center;
+}
+
+.row {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.cart-row {
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.cart-total {
+  padding-top: 25px;
+  margin: auto
+}
+
+.filter-menu {
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 25px;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.content {
+  margin: auto;
+}
+
+.cart-button {
+  margin-top: 50px;
+}
+
+.shred-logo {
+  height: 40%;
+  width: 40%;
+  user-select: none;
+}
+
+.world {
+  text-align: center;
+}
+
+.partnerlogo-one {
+  height: 75%;
+  width: 65%;
+  margin: auto;
+}
+
+.partnerlogo-two {
+  height: 75%;
+  width: 50%;
+  margin: auto;
+}
+
+.partnerlogo-three {
+  height: auto;
+  width: auto;
+  margin:auto;
+}
+
+.partnerlogo-four {
+  height: auto;
+  width: auto;
+  margin:auto;
+}
+
+a.item {
+  font-size: 20px;
+}
+
+div.ui.inverted.pointing.secondary.menu {
+  margin: auto !important;
+}
+
+.home {
+  padding-top: 150;
+}
+
+div.ui.grid {
+  text-align: center;
+}
+
+.done {
+  margin: auto;
+}
+
+.welcome {
+  padding-bottom: 150px;
 }
