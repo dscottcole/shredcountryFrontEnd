@@ -70,9 +70,11 @@ class Cart extends React.Component{
         )
 
         return(
-            <div>
+            <div class="cart">
                 <div class="ui grid container warning">
+                <h2 class="cart-total"> { "Cart Total: $" + this.props.cartTotal } </h2>
                     <div class="row">
+
                         {bikes.map(bike => <CartCard 
                             key={bike.id}
                             bike={bike}
@@ -80,12 +82,9 @@ class Cart extends React.Component{
                         />)}
                     </div>
                 </div>
-                <div class="ui centered grid">
-                    <h2> { "Cart Total: $" + this.props.cartTotal } </h2>
-                    <div class="row">
+                <div class="cart-button">
                         <Button onClick={() => this.checkOut()} positive>Check Out</Button>
-                    </div>
-                    {this.state.error !== "" ? errorMessage : null}
+                        {this.state.error !== "" ? errorMessage : null}
                 </div>
             </div>
         )

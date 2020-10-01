@@ -7,6 +7,7 @@ import Cart from '../components/Cart'
 import Menu from '../components/Menu'
 import Orders from '../components/Orders'
 import SingleOrder from '../components/SingleOrder'
+import Home from '../components/Home'
 
 import { 
   BrowserRouter, 
@@ -98,10 +99,10 @@ class App extends React.Component {
   }
 
   render() {
+ 
     return (
       <div className='world'>
-        <h1>Shredcountry.com</h1>
-
+        <img class="shred-logo" src={require('../Images/snailcountry2.png')}></img>
         <BrowserRouter>
 
         
@@ -111,7 +112,7 @@ class App extends React.Component {
         <Switch>
 
           <Route exact path="/">
-            <p>Home</p>
+            <Home />
           </Route>
 
           <Route path="/login">
