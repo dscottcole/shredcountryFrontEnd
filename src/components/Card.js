@@ -55,7 +55,7 @@ class BikeCard extends React.Component{
                 <div onClick={() => this.handleClick()} class="ui link cards">
                     <div class="card">
                         <div class="image">
-                            <img src={bike.image}></img>
+                            <img class="bike-card-image" src={bike.image}></img>
                         </div>
                     <div class="content">
                         <div class="header">{bike.model + " " + bike.build}</div>

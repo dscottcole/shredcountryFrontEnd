@@ -17,7 +17,9 @@ class SingleOrder extends React.Component{
     getOrder = () => {
         let id = parseInt(window.location.pathname.slice(8))
 
-        fetch(`http://localhost:3000/orders/${id}`, {
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+        fetch(`${fetchUrl}/orders/${id}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +42,9 @@ class SingleOrder extends React.Component{
     }
 
     cancelOrder = (id) => {
-        fetch(`http://localhost:3000/orders/${id}`, {
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+        fetch(`${fetchUrl}/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
@@ -67,7 +71,9 @@ class SingleOrder extends React.Component{
             }
         }
 
-        fetch(`http://localhost:3000/orders/${id}`, {
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+        fetch(`${fetchUrl}/orders/${id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
