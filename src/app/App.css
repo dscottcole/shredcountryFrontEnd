@@ -24,6 +24,7 @@ a {
 
 .cart {
   text-align: center;
+  margin: auto;
 }
 
 .row {
@@ -53,10 +54,13 @@ a {
 
 .content {
   margin: auto;
+  text-align: center;
 }
 
 .cart-button {
   margin-top: 50px;
+  text-align: center;
+  display:inline-block;
 }
 
 .shred-logo {
@@ -115,4 +119,27 @@ div.ui.grid {
 
 .welcome {
   padding-bottom: 150px;
+}
+
+.ui.warning.message {
+  padding-top: 15px;
+  margin: auto;
+}
+
+.signup-warning {
+  margin-top: 25px;
+  text-align: center;
+  display:inline-block;
+}
+
+.login-warning {
+  margin-top: 25px;
+  text-align: center;
+  display:inline-block;
+}
+
+.cart-warning {
+  margin-top: 25px;
+  text-align: center;
+  display:inline-block;
 }

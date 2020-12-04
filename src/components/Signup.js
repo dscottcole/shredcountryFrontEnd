@@ -16,7 +16,9 @@ class FormUnstackableGroup extends React.Component{
   }
 
   signUp = (newUser) => {
-    fetch('http://localhost:3000/users', {
+    let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+    fetch(`${fetchUrl}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -73,7 +75,7 @@ class FormUnstackableGroup extends React.Component{
     let errorMessage = (
       <Message
       warning
-      header='Account creation failed'
+      header='Account creation failed!'
       list={[
         ...this.state.error
       ]}
@@ -94,11 +96,12 @@ class FormUnstackableGroup extends React.Component{
             <Form.Input type='password' fluid label='Password' placeholder='Password' name='password' value={this.state.password} />
             <Form.Input type='password' fluid label='Password Confirmation' placeholder='Password Confirmation' name='passwordConfirmation' value={this.state.passwordConfirmation}/>
           </Form.Group>
-
-          {this.state.error.length !== 0 ? errorMessage : null}
-
           <Button onClick={e => this.handleSubmit(e)} type='submit'>Sign Up</Button>
         </Form>
+
+        <div class="signup-warning">
+            {this.state.error.length !== 0 ? errorMessage : null}
+        </div>
     </Segment>
     )
   }

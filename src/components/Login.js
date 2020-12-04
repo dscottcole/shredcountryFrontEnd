@@ -13,7 +13,9 @@ class Login extends React.Component {
     }
     
     logIn = (user) => {
-        fetch('http://localhost:3000/login', {
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+        fetch(`${fetchUrl}/login`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
@@ -77,11 +79,11 @@ class Login extends React.Component {
                     <Form.Input fluid label='Username' placeholder='Username' name='username' value={this.state.username}/>
                     <Form.Input type='password' fluid label='Password' placeholder='Password' name='password' value={this.state.password} />
                 </Form.Group>
-
-                {this.state.error !== "" ? errorMessage : null}
-
                 <Button onClick={e => this.handleSubmit(e)} type='submit'>Log In</Button>
                 </Form>
+                <div class="login-warning">
+                    {this.state.error !== "" ? errorMessage : null}
+                </div>
             </Segment>
         )
     }

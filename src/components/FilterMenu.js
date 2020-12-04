@@ -19,6 +19,7 @@ class FilterMenu extends React.Component{
                     <option name="M" value='M'>M</option>
                     <option name="L" value='L'>L</option>
                     <option name="XL" value='XL'>XL</option>
+                    <option name="XXL" value='XXL'>XXL</option>
                 </Form.Field>
                 </Form.Group>
                 <p></p>
@@ -30,6 +31,7 @@ class FilterMenu extends React.Component{
                     <option name="Enduro" value='Enduro'>Enduro</option>
                     <option name="Downhill" value='Downhill'>Downhill</option>
                     <option name="Gravel" value='Gravel'>Gravel</option>
+                    <option name="HyperBike" value='HyperBike'>HyperBike</option>
                 </Form.Field>
                 </Form.Group>
             </Form>

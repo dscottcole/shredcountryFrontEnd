@@ -32,7 +32,9 @@ class App extends React.Component {
   }
 
   getBikes = () => {
-    fetch('http://localhost:3000/bikes')
+    let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+    fetch(`${fetchUrl}/bikes`)
     .then(res => res.json())
     .then(bikes => this.assignBikes(bikes))
   }
@@ -104,8 +106,6 @@ class App extends React.Component {
       <div className='world'>
         <img class="shred-logo" src={require('../Images/snailcountry2.png')}></img>
         <BrowserRouter>
-
-        
 
         <Menu isLoggedIn={this.state.isLoggedIn} cart={this.state.cart} />
 

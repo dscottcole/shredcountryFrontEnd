@@ -14,6 +14,7 @@ class Cart extends React.Component{
 
     componentDidMount = () => {
         this.setCartState()
+        console.log(process.env.NODE_ENV === "development")
     }
 
     componentDidUpdate = (previousProps) => {
@@ -31,8 +32,10 @@ class Cart extends React.Component{
         let orderInfo = {
             'cart': this.state.cart
         }
+        
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
 
-        fetch('http://localhost:3000/orders',{
+        fetch(`${fetchUrl}/orders`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +65,7 @@ class Cart extends React.Component{
         let errorMessage = (
             <Message
             warning
-            header='Error!'
+            header='Required:'
             list={[
                 this.state.error
             ]}

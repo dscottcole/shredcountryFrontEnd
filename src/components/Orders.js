@@ -13,7 +13,9 @@ class Orders extends React.Component {
     }
 
     getOrders = () => {
-        fetch('http://localhost:3000/orders', {
+        let fetchUrl = process.env.NODE_ENV === "development" ? 'http://localhost:3000' : 'https://shredcountry2.herokuapp.com'
+
+        fetch(`${fetchUrl}/orders`, {
             method: 'GET',
             headers: {
                 "Application-Type": "application/json",
